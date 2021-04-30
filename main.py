@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-"""Play a fixed frequency sound."""
 from __future__ import division
 import math
 
@@ -32,9 +31,13 @@ def sine_tone(frequency, duration, volume=1, sample_rate=22050):
     stream.close()
     p.terminate()
 
-sine_tone(
-    frequency=440.00,
-    duration=3.00,
-    volume=.01,
-    sample_rate=22050
-)
+# Base frequency (lowest frequency possible)
+b = 130.813
+def find_frequency(x, s): 
+    x1 = x / 18 
+    s1 = x1 + s
+    b1 = math.pow(2, s1)
+    y = b * b1
+    return y
+
+sine_tone(frequency=find_frequency(x=5, s=3), duration=5,)
